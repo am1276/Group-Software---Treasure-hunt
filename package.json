@@ -1,0 +1,21 @@
+{
+  "name": "GSEP",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:KaiZarzycki/GSEP.git",
+  "author": "Alex Stagg <as1200@exeter.ac.uk>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "player-frontend": "yarn workspace player-frontend start",
+    "gamekeeper-frontend": "yarn workspace gamekeeper-frontend start",
+    "server": "yarn workspace server start",
+    "start": "concurrently --kill-others-on-fail \"yarn run player-frontend\" \"yarn run gamekeeper-frontend\" \"yarn run server\"",
+    "lint": "yarn workspace player-frontend lint && yarn workspace gamekeeper-frontend lint"
+  },
+  "workspaces": ["Technical/*"],
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.0"
+  }
+}
