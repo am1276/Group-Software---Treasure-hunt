@@ -1,0 +1,41 @@
+@startuml
+object Group {
+  String name
+  String course
+}
+
+object User {
+  String email
+  String hashp
+  String name
+  String display_name
+  String display_email
+  String course
+  Integer score
+}
+
+object Route {
+  String name
+}
+
+object Location {
+  String name
+  Integer latitude
+  Integer longitude
+}
+
+object Gamekeeper {
+  String email
+  String hashp
+}
+
+object Task {
+  String question
+  String answer
+}
+
+Group "1" *-- "many" User : Has 
+Group "many" *-- "1" Route : Is on
+Route "many" *-- "many" Location : Has
+Location "1" *-- "many" Task : Has
+@enduml
