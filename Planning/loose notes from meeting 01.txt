@@ -1,0 +1,24 @@
+List of locations:
+- Forum
+- Sports center
+- Wellbeing
+- Their course building
+- Accommodation
+- Ram
+- Library
+- Bus stop
+- Career zone
+- Guild
+- International students building
+
+Features:
+- Notifications
+- Time measuring
+- Points
+- Statistics for each course
+
+Validation
+- Photos
+- QR codes
+- Typing answers
+- Geolocation by GPS / Bluetooth / IP from University Wi-Fi
