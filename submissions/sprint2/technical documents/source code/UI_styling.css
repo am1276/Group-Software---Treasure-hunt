@@ -1,0 +1,110 @@
+#container {
+   height: 100%;
+   width: 100%;
+   position: relative;
+}
+
+#map {
+   height: 100%;
+   width: 100%;
+   position: absolute;
+}
+
+#objective {
+   height: 15%;
+   width: 100%;
+   bottom: 0px;
+   text-align: center;
+   padding-top: 2%;
+   font-size: 125%;
+   color: white;
+   font-family: 'Roboto';
+   position: absolute;
+   box-shadow: 5px 10px 48px 15px black;
+   background: rgb(0,59,250);
+   background: linear-gradient(49deg, rgba(0,59,250,0.7959558823529411) 0%, rgba(2,139,255,1) 51%, rgba(68,201,255,0.7987570028011204) 100%);
+}
+
+#score {
+    height: 30px;
+    width: 45%;
+    position: absolute;
+    top: 10px;
+    border-radius: 0px 5px 5px 0px;
+    text-align: center;
+    color: white;
+    font-size: 125%;
+    transition: 0.5s;
+    font-family: 'Roboto';
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-bottom-color: royalblue;
+    border-right-color: royalblue;
+    border-right-width: 2px;
+    border-bottom-width: 4px;
+    box-shadow: 0px 1px 20px black;
+    background: rgb(0,59,250);
+    background: linear-gradient(49deg, rgba(0,59,250,0.7959558823529411) 0%, rgba(2,139,255,1) 51%, rgba(68,201,255,0.7987570028011204) 100%);
+}
+
+#marker {
+    width: 8%;
+    height: 3%;
+    top: 45%;
+    left: 46%;
+    position: absolute;
+    border-radius: 50%;
+    border-bottom-style: solid;
+    border-bottom-color: darkred;
+    border-bottom-width: 2px;
+    box-shadow: 0px 1px 20px black;
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(255,120,120,1) 100%);
+}
+
+#hamburgermenu {
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0px 1px 20px black;
+    background-color: DarkSlateBlue;
+    transition: 0.5s;
+}
+
+#hamburger {
+   height: 60px;
+   width: 60px;
+   position: absolute;
+   right: 0px;
+   top: 10px;
+   border-radius: 6px 0px 0px 6px;
+   box-shadow: 0px 1px 20px black;
+   border-bottom-style: solid;
+   border-left-style: solid;
+   border-bottom-color: royalblue;
+   border-left-color: royalblue;
+   border-left-width: 2px;
+   border-bottom-width: 4px;
+   transition: 0.5s;
+   filter: brightness(100%);
+   background-color: #00aacc;
+   background: rgb(45,87,236);
+   background: linear-gradient(236deg, rgba(45,87,236,0.8631827731092436) 0%, rgba(2,139,255,1) 46%, rgba(68,201,255,0.8827906162464986) 100%);
+}
+
+.hamburgerLines {
+   height: 4px;
+   width: 42px;
+   border-radius: 2px;
+   position: relative;
+   left: 9px;
+   background-color: white;
+}
+
+html, body {
+ height: 100%;
+ margin: 0;
+ padding: 0;
+}
