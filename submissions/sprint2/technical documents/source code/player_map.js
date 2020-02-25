@@ -10,13 +10,16 @@ var userMapConfig = {
     disableDefaultUI: true
 };
 
+// load the map on the player UI
 function initialiseUserMap() {
     map = new google.maps.Map(document.getElementById('map'), userMapConfig);
     map.setTilt(45);
-
+    
+    // repeatedly obtain user's position using GPS
     updateUserPosition();
 }
 
+// obtain user's position and center the map to it
 function getUserPosition(position) {
     var userPosition = {
             lat: position.coords.latitude,
@@ -25,6 +28,7 @@ function getUserPosition(position) {
     map.setCenter(userPosition);
 }
 
+// repeatedly watches for changes in user position then update map
 function updateUserPosition() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(getUserPosition);
@@ -33,6 +37,7 @@ function updateUserPosition() {
     }
 }
 
+// expands and closes sidebar hamburger div
 function expandCloseMenu() {
     if (hamburgerState == 0) {
         document.getElementById("hamburgermenu").style.width = "300px";
