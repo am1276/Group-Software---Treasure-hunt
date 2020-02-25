@@ -45,12 +45,14 @@ function placeMainMarker(latLng, map) {
       alert("Main objective already exists!");
       return;
   }
+  // generate a marker on the map with the following config
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
     icon: icons + 'target.png',
     animation: google.maps.Animation.DROP
   });
+  // store marker data in designated object
   mainObjectives[title] = [latLng.lat(), latLng.lng()];
   console.log(mainObjectives);
   document.getElementById("mobjctvlist").innerHTML += "Main " + title + "\n" + mainObjectives[title] + "\n";
@@ -65,12 +67,14 @@ function placeClueMarker(latLng, map) {
         alert("Clue already exists!");
         return;
     }
+    // generate a marker on the map with the following config
     var marker = new google.maps.Marker({
     position: latLng,
     map: map,
     icon: icons + 'info_circle.png',
     animation: google.maps.Animation.DROP
   });
+  // store marker data in designated object
   secondaryObjectives[title] = [latLng.lat(), latLng.lng()];
   console.log(secondaryObjectives);
   document.getElementById("mobjctvlist").innerHTML += "Clue " + title + "\n" + secondaryObjectives[title] + "\n";
