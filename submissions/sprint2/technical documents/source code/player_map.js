@@ -39,6 +39,7 @@ function updateUserPosition() {
 
 // expands and closes sidebar hamburger div
 function expandCloseMenu() {
+    // 0 means menu is closed, so expand it
     if (hamburgerState == 0) {
         document.getElementById("hamburgermenu").style.width = "300px";
         document.getElementById("hamburger").style.right = "300px";
@@ -47,6 +48,7 @@ function expandCloseMenu() {
         document.getElementById("score").style.fontSize = "0px";
         hamburgerState = 1;
     } else {
+        // if state isn't 0 close it
         document.getElementById("hamburgermenu").style.width = "0px";
         document.getElementById("hamburger").style.right = "0px";
         document.getElementById("hamburger").style.filter = "brightness(100%)";
