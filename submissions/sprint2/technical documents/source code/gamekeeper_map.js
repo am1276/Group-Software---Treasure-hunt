@@ -11,18 +11,22 @@ var gamekeeperMapConfig = {
     disableDefaultUI: true
 };
 
+// load the map on the gamekeeper UI
 function initialiseGamekeeperMap() {
     map = new google.maps.Map(document.getElementById('map'), gamekeeperMapConfig);
     map.setTilt(0);
+    // listener to place main objective markers
     map.addListener('click', function(click) {
         placeMainMarker(click.latLng, map);
     });
+    // listener to place clue markers
     map.addListener('rightclick', function(rightclick) {
         placeClueMarker(rightclick.latLng, map);
     });
 
 }
 
+// ask for the name of the game when saving markers to store the markers under
 function gameNamePrompt() {
     var gameName = prompt("Name your game:", "");
     if (gameName == "" || gameName == null) {
@@ -32,6 +36,7 @@ function gameNamePrompt() {
     return gameName;
 }
 
+// event handler for left clicks, places main markers on map and asks to name the marker
 function placeMainMarker(latLng, map) {
   var title = prompt('Name your primary objective:', '');
   if (title == '' || title == null) {
@@ -51,6 +56,7 @@ function placeMainMarker(latLng, map) {
   document.getElementById("mobjctvlist").innerHTML += "Main " + title + "\n" + mainObjectives[title] + "\n";
 }
 
+// event handler for right clicks, places clue markers on maps and asks to name the marker
 function placeClueMarker(latLng, map) {
     var title = prompt('Name your clue:', '');
     if (title == '' || title == null) {
@@ -70,6 +76,7 @@ function placeClueMarker(latLng, map) {
   document.getElementById("mobjctvlist").innerHTML += "Clue " + title + "\n" + secondaryObjectives[title] + "\n";
 }
 
+// sends all marker data to database (php file)
 function submitMarkers() {
     var gameName = gameNamePrompt();
     for (var marker in mainObjectives) {
