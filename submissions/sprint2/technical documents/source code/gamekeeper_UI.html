@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Treasure hunt game</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="gamekeeper_UI_styling.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="map"></div>
+            <div id="sidebar">
+                <div id="mobjctvlist"></div>
+                <button id="save" onclick="submitMarkers()">submit</button>
+            </div>
+        </div>
+        <script src="gamekeeper_map.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcKvtKpGcA9K21EskOrTgXWSGq5VFVef0&callback=initialiseGamekeeperMap"
+        async defer></script>
+    </body>
+</html>
