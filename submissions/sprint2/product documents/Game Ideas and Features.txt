@@ -1,0 +1,49 @@
+Summary:
+The basic idea for the treasure hunt game is for students to find a location
+in the university map which has been chosen by the gamekeeper. If the student
+thinks that they are in the right place, they can click on a button in the app
+to see how far away they are from the location. The gamekeeper can also place
+clue markers on the map, which will give players additional information about
+the target location when they are close enough to the clue markers.
+
+Our minimum viable product is an app which allows a gamekeeper to specify a
+location for a player to find and for the player to be able to verify that
+they have found the correct location through the use of geolocation. Our MVP
+will also allow the gamekeeper to put clue markers on the map. When players get
+close enough to a clue marker, they will be given some information to help them
+find their location. For example, they might be given an image of the location,
+or the map could be updated to show a region where the location could be.
+
+Of course we are planning on many more additional features such as a more
+sophisticated verification system, a scoring system and additional tasks for
+the players such as location-specific questions.
+
+Features:
+
+Must have:
+-Basic UI for both player and gamekeeper
+-Implementation of Google Maps API and geolocation to track players
+-System for the gamekeeper to mark main locations
+-System for the gamekeeper to mark hint locations
+-System for player to check their distance from target location
+
+Should have:
+-A scoring system (could give students higher scores depending on factors such
+as distance from location, time or any other additional objectives completed)
+-A "Hunt The Thimble" guidance system for the clue markers (will let the
+students know they are getting "hotter" the closer they get to the clue or
+"colder" if they are getting further away)
+-Additional objectives - e.g. have students answer a question relating to their
+course or the university in general when they are at a hint location to get
+their clue or when they are at their target location to earn extra points.
+-A system for the gamekeeper to create teams
+-A one-time key system for players to be able to quickly join a team
+-An FAQ
+
+Could have:
+-A leaderboard system
+-An implementation of a timer
+
+(probably) Won't have:
+-Art assets for the UI
+-Additional themes for the UI
