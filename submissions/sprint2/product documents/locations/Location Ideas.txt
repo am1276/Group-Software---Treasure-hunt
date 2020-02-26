@@ -1,0 +1,75 @@
+General Locations:
+
+- Forum
+- Sports centre
+- Wellbeing
+- Ram
+- Library
+- Bus stop
+- Career zone
+- Guild
+- International students building
+- Student Information Desk (SID)
+- Newman/Peter Chalk
+
+Course-Specific locations:
+
+    Amory:
+    - Classics and Ancient History
+    - Geography
+    - History
+    - International Relations
+    - Law
+    - Philosophy
+    - Politics
+    - Sociology
+    - Theology
+
+    Building:One:
+      -University of Exeter Business School
+
+    Geoffrey Pope:
+      -Biosciences
+
+    Harrison:
+     -Computer Science
+     -Engineering
+     -Mathematical Sciences
+
+    Hatherly:
+     -Biosciences
+
+    Physics Building:
+      -Physics
+      -Radiography
+
+    Queen’s:
+      -English
+      -Film Studies
+      -Foreign Language Centre
+      -Modern Languages
+
+    Streatham Court:
+     -University of Exeter Business School
+     -Accounting
+     -Business and Management
+     -Economics
+
+Accessibility:
+
+We need to consider students with accessibility needs when choosing which
+locations to include in our app. For example, the Forum has automatic doors and 
+there are many paths to the forum which do not require any stairs to be taken.
+Also, the Forum is very spacious and contains an elevator so in general, the
+forum is a very accessible location. Because of this, the forum and other
+important locations within the forum such as the library, SID and the career
+zone are great locations to include in the app because of their ease of
+accessibility and their importance to students regardless of their course.
+Locations such as these could be a part of every student's search, but this may
+cause problems as there may be too many students in these locations at a given
+time.
+
+The Harrison building is very important for Computer Science students but the
+front entrance is not very accessible as it has stairs leading to the entrance
+but no ramp. However, there is a rear entrance with a ramp and the
+building contains an elevator.

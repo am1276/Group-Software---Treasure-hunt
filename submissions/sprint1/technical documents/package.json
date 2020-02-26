@@ -13,7 +13,11 @@
     "start": "concurrently --kill-others-on-fail \"yarn run player-frontend\" \"yarn run gamekeeper-frontend\" \"yarn run server\"",
     "lint": "yarn workspace player-frontend lint && yarn workspace gamekeeper-frontend lint"
   },
-  "workspaces": ["Technical/*"],
+  "workspaces": [
+    "player-frontend",
+    "gamekeeper-frontend",
+    "server"
+  ],
   "devDependencies": {
     "concurrently": "^5.1.0",
     "cross-env": "^7.0.0"
