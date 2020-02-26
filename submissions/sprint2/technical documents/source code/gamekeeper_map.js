@@ -29,8 +29,8 @@ function initialiseGamekeeperMap() {
 // ask for the name of the game when saving markers to store the markers under
 function gameNamePrompt() {
     var gameName = prompt("Name your game:", "");
-    if (gameName == "" || gameName == null) {
-        alert("Please name your game.");
+    if (gameName == "") {
+        alert("Please enter a valid name.");
         gameNamePrompt();
     }
     return gameName;
@@ -83,6 +83,8 @@ function placeClueMarker(latLng, map) {
 // sends all marker data to database (php file)
 function submitMarkers() {
     var gameName = gameNamePrompt();
+    if (gameName == null)
+        return;
     for (var marker in mainObjectives) {
         var title = marker;
         var latitude = mainObjectives[marker][0];
