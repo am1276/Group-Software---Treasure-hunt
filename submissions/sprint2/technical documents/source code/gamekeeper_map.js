@@ -1,7 +1,8 @@
-var icons =  'http://maps.google.com/mapfiles/kml/shapes/';
+var icons = 'http://maps.google.com/mapfiles/kml/shapes/';
 var map;
 var mainObjectives = {};
 var secondaryObjectives = {};
+var markerReferences = [];
 var gamekeeperMapConfig = {
     center: {lat: 50.735918, lng: -3.533217},
     zoom: 17,
@@ -38,24 +39,25 @@ function gameNamePrompt() {
 
 // event handler for left clicks, places main markers on map and asks to name the marker
 function placeMainMarker(latLng, map) {
-  var title = prompt('Name your primary objective:', '');
-  if (title == '' || title == null) {
-      return;
-  } else if (title in mainObjectives) {
-      alert("Main objective already exists!");
-      return;
-  }
-  // generate a marker on the map with the following config
-  var marker = new google.maps.Marker({
-    position: latLng,
-    map: map,
-    icon: icons + 'target.png',
-    animation: google.maps.Animation.DROP
-  });
-  // store marker data in designated object
-  mainObjectives[title] = [latLng.lat(), latLng.lng()];
-  console.log(mainObjectives);
-  document.getElementById("mobjctvlist").innerHTML += "Main " + title + "\n" + mainObjectives[title] + "\n";
+    var title = prompt('Name your primary objective:', '');
+    if (title == '' || title == null) {
+        return;
+    } else if (title in mainObjectives) {
+        alert("Main objective already exists!");
+        return;
+    }
+// generate a marker on the map with the following config
+    var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        icon: icons + 'target.png',
+        animation: google.maps.Animation.DROP
+    });
+    markerReferences.push(marker);
+    // store marker data in designated object
+    mainObjectives[title] = [latLng.lat(), latLng.lng()];
+    console.log(mainObjectives);
+    document.getElementById("mobjctvlist").innerHTML += "Main " + title + "\n" + mainObjectives[title] + "\n";
 }
 
 // event handler for right clicks, places clue markers on maps and asks to name the marker
@@ -69,15 +71,16 @@ function placeClueMarker(latLng, map) {
     }
     // generate a marker on the map with the following config
     var marker = new google.maps.Marker({
-    position: latLng,
-    map: map,
-    icon: icons + 'info_circle.png',
-    animation: google.maps.Animation.DROP
-  });
-  // store marker data in designated object
-  secondaryObjectives[title] = [latLng.lat(), latLng.lng()];
-  console.log(secondaryObjectives);
-  document.getElementById("mobjctvlist").innerHTML += "Clue " + title + "\n" + secondaryObjectives[title] + "\n";
+        position: latLng,
+        map: map,
+        icon: icons + 'info_circle.png',
+        animation: google.maps.Animation.DROP
+    });
+    markerReferences.push(marker);
+    // store marker data in designated object
+    secondaryObjectives[title] = [latLng.lat(), latLng.lng()];
+    console.log(secondaryObjectives);
+    document.getElementById("mobjctvlist").innerHTML += "Clue " + title + "\n" + secondaryObjectives[title] + "\n";
 }
 
 // sends all marker data to database (php file)
@@ -85,6 +88,7 @@ function submitMarkers() {
     var gameName = gameNamePrompt();
     if (gameName == null)
         return;
+    // insert all main objective markers
     for (var marker in mainObjectives) {
         var title = marker;
         var latitude = mainObjectives[marker][0];
@@ -93,9 +97,11 @@ function submitMarkers() {
         $.ajax({
             url:'insert_markers.php',
             method:'POST',
-            data:{title:title,latitude:latitude,longitude:longitude,type:type,gameName:gameName}
+            data:{title:title,latitude:latitude,longitude:longitude,type:type,gameName:gameName},
+            success:function(data) { alert(data + ": Main objective markers.") } // BUG HERE
         });
     }
+    // insert all clue markers
     for (var marker in secondaryObjectives) {
         var title = marker;
         var latitude = secondaryObjectives[marker][0];
@@ -104,7 +110,15 @@ function submitMarkers() {
         $.ajax({
             url:'insert_markers.php',
             method:'POST',
-            data:{title:title,latitude:latitude,longitude:longitude,type:type,gameName:gameName}
+            data:{title:title,latitude:latitude,longitude:longitude,type:type,gameName:gameName},
+            success:function(data) { alert(data + ": Clue markers.") } // BUG HERE
         });
     }
+    // clear the gamekeeper map of markers
+    markerReferences.forEach(function(i) {
+        i.setMap(null);
+    });
+    // remove all references to markers once they have been saved to the db
+    mainObjectives = {};
+    secondaryObjectives = {};
 }
