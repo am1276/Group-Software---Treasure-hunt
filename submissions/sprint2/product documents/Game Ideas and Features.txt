@@ -9,9 +9,10 @@ the target location when they are close enough to the clue markers.
 Our minimum viable product is an app which allows a gamekeeper to specify a
 location for a player to find and for the player to be able to verify that
 they have found the correct location through the use of geolocation. Our MVP
-will also allow the gamekeeper to put clue markers on the map. When players get
-close enough to a clue marker, they will be given some information to help them
-find their location. For example, they might be given an image of the location,
+will also allow the gamekeeper to put clue markers on the map (though due to 
+time constraints, full clue marker functionality has not yet been implemented). In the planned
+system, when players get close enough to a clue marker, they will be given some information 
+to help them find their location. For example, they might be given an image of the location,
 or the map could be updated to show a region where the location could be.
 
 Of course we are planning on many more additional features such as a more
