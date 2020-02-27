@@ -4,7 +4,7 @@ based on the security of the website you host the system off of, the Google Maps
 Ideally, to run the system you should host it locally using a server stack. To recreate the exact conditions of development and
 how I have reviewed the system, I recommend using a WAMP stack (mysql, php and apache).
 
-For convenience, save all source code files into one directory.
+For convenience, save all source code files into one directory when running the system.
 
 Before proceeding, I advise downloading and making use of the examplar database mvpdb.sql within the server directory
 to obtain the schema necessary to run the system as well as test the system with some previously generated data. Please ensure that you correctly edit the database_config.php file to suit the configuration of your mysql installation in order for the system to be able to successfully communicate with the database (via a direct connection).
