@@ -7,9 +7,7 @@ how I have reviewed the system, I recommend using a WAMP stack (mysql, php and a
 For convenience, save all source code files into one directory.
 
 Before proceeding, I advise downloading and making use of the examplar database mvpdb.sql within the server directory
-to obtain the schema necessary to run the system as well as test the system with some previously generated data. Please ensure that you correctly edit the database_config.php
-file to suit the configuration of your mysql installation in order for the system to be able to successfully communicate
-with the database (via a direct connection).
+to obtain the schema necessary to run the system as well as test the system with some previously generated data. Please ensure that you correctly edit the database_config.php file to suit the configuration of your mysql installation in order for the system to be able to successfully communicate with the database (via a direct connection).
 
 To run the system from the perspective of a gamekeeper, launch the gamekeeper_UI.html on a server (have all source code files together in a directory so that code can run smoothly).
 As a gamekeeper, you can left click to place main objective markers and right click to place clue/secondary objective markers all over a map of the university campus. Once finished with placing markers, you can save the coordinates of all the markers you have placed onto a database by pressing submit (given that you have linked a database to the system and are using the same schema as mvpdb.sql) where you are prompted to save all your markers under a game name which will be later used by the player to initialise and play the game using your markers.
