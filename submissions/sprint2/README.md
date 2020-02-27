@@ -13,7 +13,7 @@ The group members are:
 6. Angel Migallon
 7. Alexander Powell-Tuck
 
-This is a submission for Sprint 1. There are three types of document that you will find the following places.
+This is a submission for Sprint 2. There are three types of document that you will find the following places.
 
 ## PROCESS DOCUMENTS
 Our process documents of which includes the Kanban board are managed using Trello. For this sprint, some reform in terms of our process documentation has been made based off of feedback; new ideas and revamps of old ones to suit more realistic goals were made, proper prioritisation of backlog tasks were allocated, the addition of DONE columns were introduced to the Kanban board and the creation of a development policy for all members in the group to follow has been established.
