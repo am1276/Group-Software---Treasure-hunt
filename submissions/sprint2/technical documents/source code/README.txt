@@ -1,5 +1,5 @@
 NOTE THAT THE CURRENT SYSTEM IS A MINIMUM VIABLE PRODUCT AND IS SUBJECT TO SIGNIFICANT CHANGE. Also note that 
-based on the security of the website you host the system off of, the Google Maps api may not function properly.
+based on the security of the website you host the system off of, the Google Maps api used may not function properly.
 
 Ideally, to run the system you should host it locally using a server stack. To recreate the exact conditions of development and
 how I have reviewed the system, I recommend using a WAMP stack (mysql, php and apache).
