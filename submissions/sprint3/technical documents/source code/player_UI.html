@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Treasure hunt game</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="player_UI_styling.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+            <div id="marker"></div>
+            <div id="map"></div>
+            <div id="hamburger" onclick="expandCloseMenu()">
+                <div class="hamburgerLines" style="top: 12px;"></div>
+                <div class="hamburgerLines" style="top: 24px;"></div>
+                <div class="hamburgerLines" style="top: 36px;"></div>
+            </div>
+            <div id="objective"><div style="font-size:125%;color:white;font-family:'Roboto';">Current objective</div></div>
+            <div id="clue"></div>
+            <div id="score">Score:</div>
+            <div id="marker"></div>
+            <div id="hamburgermenu"></div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcKvtKpGcA9K21EskOrTgXWSGq5VFVef0&callback=initialiseUserMap&libraries=geometry"
+        async defer></script>
+        <script src="player_map.js"></script>
+    </body>
+</html>
