@@ -47,21 +47,13 @@ function expandCloseMenu() {
     if (hamburgerState == 0) {
         document.getElementById("hamburgermenu").style.width = "250px";
         document.getElementById("hamburger").style.right = "250px";
-        document.getElementById("hamburger").style.filter = "brightness(50%)";
-        document.getElementById("score").style.width = "0px";
-        document.getElementById("score").style.fontSize = "0px";
-        document.getElementById("clue").style.width = "0px";
-        document.getElementById("clue").style.fontSize = "0px";
+        document.getElementById("container").style.right = "250px";
         hamburgerState = 1;
     } else {
         // if state isn't 0 close it
         document.getElementById("hamburgermenu").style.width = "0px";
         document.getElementById("hamburger").style.right = "0px";
-        document.getElementById("hamburger").style.filter = "brightness(100%)";
-        document.getElementById("score").style.width = "45%";
-        document.getElementById("score").style.fontSize = "125%";
-        document.getElementById("clue").style.width = "45%";
-        document.getElementById("clue").style.fontSize = "125%";
+        document.getElementById("container").style.right = "0px";
         hamburgerState = 0;
     }
 }
@@ -85,7 +77,7 @@ function retreiveMarkers(gameToLoad) {
                     alert("Failed to read marker data.");
                 }
             });
-            initialiseMainMarkers(main, clue, 0);
+            initialiseMarkers(main, clue, 0);
         }
     });
 }
@@ -101,16 +93,21 @@ function gameToLoadPrompt() {
 }
 
 // launch the game. As of now for the MVP, only main objective markers are used.
-function initialiseMainMarkers(markers, clues, score) {
+function initialiseMarkers(markers, clues, score) {
+
     document.getElementById("score").innerHTML = "Score: " + score;
+
     // check if the player has depleted all main objectives
     if (Object.keys(markers).length == 0) {
         document.getElementById("objective").innerHTML = "You've gone through all markers.";
         return;
     }
+
     // obtain first objective location in the database
     var location = Object.keys(markers)[0];
-    document.getElementById("objective").innerHTML = "Find location: " + location;
+    var currentObjectiveText = "Find location: " + location;
+    document.getElementById("objective").innerHTML = currentObjectiveText;
+
     // track clicks on the player UI button
     $("#objective").unbind().click(function() {
         location = Object.keys(markers)[0];
@@ -118,25 +115,43 @@ function initialiseMainMarkers(markers, clues, score) {
         var playerPos = map.getCenter();
         var markerPos = new google.maps.LatLng({lat: parseFloat(markers[location][0]), lng: parseFloat(markers[location][1])});
         var distance = google.maps.geometry.spherical.computeDistanceBetween(playerPos, markerPos);
+
         // score player off of calculated distance
         if (distance < 25) {
-            alert("You've found " + location + " at " + distance + " away!");
+            document.getElementById("clue").innerHTML = "Spot on, you were " + Math.round(distance) + "m away!";
             score += 100;
         } else if (distance < 50) {
-            alert("Better luck next time, you were " + distance + " metres away!");
-            score += 50;
+            document.getElementById("clue").innerHTML = "Close enough, you were " + Math.round(distance) + "m metres away!";
+            score += 70;
         } else {
-            alert("Better luck next time, you were " + distance + " metres away!");
-            score += 10;
+            document.getElementById("objective").style.background = "red";
+            document.getElementById("score").style.cssText = "background: red; border-color: darkred;";
+            document.getElementById("objective").innerHTML = "Not quite there yet!";
+            score -= 10;
+            document.getElementById("score").innerHTML = "Score: " + score;
+            setTimeout(function() {
+                document.getElementById("objective").style.background = "linear-gradient(49deg, rgba(0,59,250,0.7959558823529411) 0%, rgba(2,139,255,1) 51%, rgba(68,201,255,0.7987570028011204) 100%)";
+                document.getElementById("score").style.cssText = "background: rgb(0,59,250) linear-gradient(49deg, rgba(0,59,250,0.7959558823529411) 0%, rgba(2,139,255,1) 51%, rgba(68,201,255,0.7987570028011204) 100%); border-color: royalblue;";
+                document.getElementById("objective").innerHTML = currentObjectiveText;
+            }, 4000);
+            return;
         }
-
-        clearInterval(interval);
+        var marker = new google.maps.Marker({
+            position: markerPos,
+            map: map,
+            icon: 'http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
+            label: {text: location, color: "#FFFFFF", fontSize: "20px", fontWeight: "bold"},
+            animation: google.maps.Animation.DROP
+        });
+        clearInterval(clueMarkerChecker);
 
         // remove the current objective marker once accomplished to move onto the next
         delete markers[location];
-        initialiseMainMarkers(markers, clues, score);
+
+        initialiseMarkers(markers, clues, score);
     });
-    var interval = setInterval(function() {
+
+    var clueMarkerChecker = setInterval(function() {
         if (Object.keys(clues).length == 0) {
             document.getElementById("clue").innerHTML = "All clues found!";
             return;
@@ -147,8 +162,10 @@ function initialiseMainMarkers(markers, clues, score) {
             var markerPosC = new google.maps.LatLng({lat: parseFloat(clues[i][0]), lng: parseFloat(clues[i][1])});
             var distanceC = google.maps.geometry.spherical.computeDistanceBetween(playerPosC, markerPosC);
             if (distanceC < 25) {
-                alert("You found a clue!");
-                document.getElementById("clue").innerHTML = "You found a clue!";
+                score += 50;
+                document.getElementById("score").innerHTML = "Score: " + score;
+                document.getElementById("clue").innerHTML = "Clue found!";
+                document.getElementById("clue").style.transform = "scale(1.2)";
                 var marker = new google.maps.Marker({
                     position: markerPosC,
                     map: map,
@@ -157,11 +174,18 @@ function initialiseMainMarkers(markers, clues, score) {
                     animation: google.maps.Animation.DROP
                 });
                 delete clues[i];
+                setTimeout(function() {
+                    document.getElementById("clue").style.transform = "scale(1)";
+                }, 7000);
                 return;
             } else if (distanceC < shortestDist || shortestDist == null) {
                 shortestDist = distanceC;
             }
         }
         document.getElementById("clue").innerHTML = "Nearest clue: " + Math.round(shortestDist) + "m";
+        document.getElementById("clue").style.transform = "scale(1.08)";
+        setTimeout(function() {
+            document.getElementById("clue").style.transform = "scale(1)";
+        }, 480);
     }, 3000);
 }
