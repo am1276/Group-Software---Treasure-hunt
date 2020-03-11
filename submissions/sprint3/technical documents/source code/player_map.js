@@ -70,7 +70,7 @@ function retreiveMarkers(gameToLoad) {
         success:function(data) {
             data.forEach(function(marker) {
                 if (marker["type"] == "Main") {
-                    main[marker["title"]] = [marker["latitude"], marker["longitude"]];
+                    main[marker["title"]] = [marker["latitude"], marker["longitude"], marker["question"], marker["answer"]];
                 } else if (marker["type"] == "Clue") {
                     clue[marker["title"]] = [marker["latitude"], marker["longitude"]];
                 } else {
@@ -115,14 +115,34 @@ function initialiseMarkers(markers, clues, score) {
         var playerPos = map.getCenter();
         var markerPos = new google.maps.LatLng({lat: parseFloat(markers[location][0]), lng: parseFloat(markers[location][1])});
         var distance = google.maps.geometry.spherical.computeDistanceBetween(playerPos, markerPos);
-
-        // score player off of calculated distance
+        
+        var bonus;
+        var answer = markers[location][3].toLowerCase();
+        
+        // score player off of calculated distance and if they can answer the question in three tries
         if (distance < 25) {
             document.getElementById("clue").innerHTML = "Spot on, you were " + Math.round(distance) + "m away!";
             score += 100;
+            // give player bonus points if they answer a question correctly
+            // they have three tries and the bonus gets smaller each time they get the answer wrong
+            for(bonus = 100; bonus <= 40; bonus -= 30){
+                var playerAnswer = prompt(markers[location][2]).toLowerCase()
+                var n = playerAnswer.localeCompare(answer);
+                if (n == 0){
+                    score += bonus;
+                    break;
+                }
+            }
         } else if (distance < 50) {
             document.getElementById("clue").innerHTML = "Close enough, you were " + Math.round(distance) + "m metres away!";
             score += 70;
+            for(bonus = 100; bonus <= 40; bonus -= 30){
+                var playerAnswer = prompt(markers[location][2]).toLowerCase()
+                var n = playerAnswer.localeCompare(answer);
+                if (n == 0){
+                    score += bonus;
+                    break;
+                }
         } else {
             document.getElementById("objective").style.background = "red";
             document.getElementById("score").style.cssText = "background: red; border-color: darkred;";
