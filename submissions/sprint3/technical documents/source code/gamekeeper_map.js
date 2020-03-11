@@ -66,14 +66,16 @@ function placeMainMarker(latLng, map) {
         alert("Main objective already exists!");
         return;
     }
+    var question = questionPrompt();
+    var answer = answerPrompt();
 // generate a marker on the map with the following config
     var marker = new google.maps.Marker({
         position: latLng,
         map: map,
         icon: icons + 'target.png',
         animation: google.maps.Animation.DROP,
-        question: quesitonPrompt(),
-        answer: answerPrompt()
+        question: question,
+        answer: answer
     });
     markerReferences.push(marker);
     // store marker data in designated object
