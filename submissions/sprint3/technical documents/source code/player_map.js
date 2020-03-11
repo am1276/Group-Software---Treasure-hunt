@@ -117,7 +117,6 @@ function initialiseMarkers(markers, clues, score) {
         var distance = google.maps.geometry.spherical.computeDistanceBetween(playerPos, markerPos);
 
         var answer = markers[location][3].toLowerCase();
-        console.log(answer);
 
         // score player off of calculated distance and if they can answer the question in three tries
         if (distance < 25) {
@@ -126,8 +125,7 @@ function initialiseMarkers(markers, clues, score) {
             // give player bonus points if they answer a question correctly
             // they have three tries and the bonus gets smaller each time they get the answer wrong
             for(var bonus = 100; bonus >= 40; bonus -= 30){
-                console.log("made it to the for loop");
-                var playerAnswer = prompt(markers[location][2]);
+                var playerAnswer = prompt(markers[location][2]).toLowerCase();
                 var n = playerAnswer.localeCompare(answer);
                 if (n == 0){
                     alert("Congratulations! You answered correctly");
