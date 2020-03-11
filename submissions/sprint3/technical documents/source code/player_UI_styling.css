@@ -99,7 +99,7 @@
     top: 0;
     right: 0;
     box-shadow: 0px 1px 20px black;
-    background-color: DarkSlateBlue;
+    background-color: #D5EBFF;
     transition: 0.5s;
 }
 
@@ -131,6 +131,14 @@
    position: relative;
    left: 9px;
    background-color: white;
+}
+
+.menuelement {
+    width: 242px;
+    margin: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: royalblue;
 }
 
 html, body {

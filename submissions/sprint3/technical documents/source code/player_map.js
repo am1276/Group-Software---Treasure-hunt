@@ -166,12 +166,43 @@ function initialiseMarkers(markers, clues, score) {
                 document.getElementById("score").innerHTML = "Score: " + score;
                 document.getElementById("clue").innerHTML = "Clue found!";
                 document.getElementById("clue").style.transform = "scale(1.2)";
+
                 var marker = new google.maps.Marker({
                     position: markerPosC,
                     map: map,
                     icon: icons + 'info_circle.png',
                     label: {text: i, color: "#FFFFFF", fontSize: "20px", fontWeight: "bold"},
                     animation: google.maps.Animation.DROP
+                });
+
+                var markerPos = new google.maps.LatLng({lat: parseFloat(markers[location][0]), lng: parseFloat(markers[location][1])});
+                var bearing = google.maps.geometry.spherical.computeHeading(markerPosC, markerPos);
+                var distance = Math.round(google.maps.geometry.spherical.computeDistanceBetween(markerPosC, markerPos));
+                var direction;
+                if ((bearing > 330 && bearing <= 360) || (bearing >= 0 && bearing < 30)) {
+                    direction = "north";
+                } else if (bearing >= 30 && bearing < 60) {
+                    direction = "north-east";
+                } else if (bearing >= 60 && bearing < 120) {
+                    direction = "east";
+                } else if (bearing >= 120 && bearing < 150) {
+                    direction = "south-east";
+                } else if (bearing >= 150 && bearing < 210) {
+                    direction = "south";
+                } else if (bearing >= 210 && bearing < 240) {
+                    direction = "south-west";
+                } else if (bearing >= 240 && bearing < 300) {
+                    direction = "west";
+                } else {
+                    bearing = "north-west";
+                }
+
+                var clueInfo = new google.maps.InfoWindow({
+                    content: location + " is " + distance + "m " + direction
+                });
+                clueInfo.open(map, marker);
+                marker.addListener('click', function() {
+                  clueInfo.open(map, marker);
                 });
                 delete clues[i];
                 setTimeout(function() {
