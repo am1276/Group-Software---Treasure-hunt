@@ -119,10 +119,10 @@ function initialiseMarkers(markers, clues, score) {
         // score player off of calculated distance
         if (distance < 25) {
             document.getElementById("clue").innerHTML = "Spot on, you were " + Math.round(distance) + "m away!";
-            score += 100;
+            score += 150;
         } else if (distance < 50) {
             document.getElementById("clue").innerHTML = "Close enough, you were " + Math.round(distance) + "m metres away!";
-            score += 70;
+            score += 80;
         } else {
             document.getElementById("objective").style.background = "red";
             document.getElementById("score").style.cssText = "background: red; border-color: darkred;";
@@ -194,7 +194,7 @@ function initialiseMarkers(markers, clues, score) {
                 } else if (bearing >= 240 && bearing < 300) {
                     direction = "west";
                 } else {
-                    bearing = "north-west";
+                    direction = "north-west";
                 }
 
                 var clueInfo = new google.maps.InfoWindow({
