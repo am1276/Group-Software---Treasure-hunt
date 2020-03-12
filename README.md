@@ -55,7 +55,8 @@ Gamekeepers must create a game full of markers. To do this, run gamekeeper.html 
   - left click to place main objective markers. These markers offer the most score and are what determines the length of a game; a player
   must deplete all main objectives to finish the game. Ideally, you should place main markers in places of importance for the player.
   - right click to place clue markers. These markers offer some score to the player when found and provide a clue to help find the main
-  objective marker. Ideally, these markers should be placed in mere places of interest.
+  objective marker. Ideally, these markers should be placed in mere places of interest. Make sure you place enough clue markers down to
+  avoid making the game too hard.
   - the activity log shows the gamekeeper what they have done in their session.
   - gamekeepers can submit their game configuration by pressing the submit button. They are prompted for a game name to distinguish between
   games in the database, the number of teams that will be playing and whether the gamekeeper would like to wipe their map of markers.
