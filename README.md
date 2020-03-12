@@ -35,7 +35,7 @@ Note that you must host this app from a HTTPS server in order for it to function
 
 # Installation and deployment
 You will need a database management system which can be connected to with a username and password, along with its address to access it
-given that this project makes use of direct connections to a database using PHP. You may follow the ER diagram supplied in this repository to create your own database, making sure to EXACTLY copy the fields or alternatively you can import the provided SQL script. Before you make use of this app, ENSURE that you have supplied the database address, username, password and database name within database_config.php so that you can successfully communicate between the database and the app.
+given that this project makes use of direct connections to a database using PHP. You may follow the ER diagram supplied in this repository to create your own database, making sure to EXACTLY copy the fields or alternatively you can import the provided SQL script named game_database.sql in this repository. Before you make use of this app, ENSURE that you have supplied the database address, username, password and database name within database_config.php so that you can successfully communicate between the database and the app.
 
 Once again, make sure that you use that exact fields as denoted in the ER diagram. Note that the passwords table has a foreign key field
 'GameName' and the players table has a foreign key field 'OneTimePassword'.
