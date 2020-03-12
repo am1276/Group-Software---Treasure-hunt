@@ -11,7 +11,7 @@ also be used anywhere else.
 When developing our code, we aim to use the conventions described by w3schools. Example: https://www.w3schools.com/js/js_conventions.asp
 
 # Tech used
-In our code, we used the following (all is integrated within code and no installations outsdie database tech are required):
+In our code, we used the following (all is integrated within code and no installations outside database tech are required):
   - HTML
   - CSS
   - Javascript
