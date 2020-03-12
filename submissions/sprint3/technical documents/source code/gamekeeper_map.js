@@ -37,6 +37,26 @@ function gameNamePrompt() {
     return gameName;
 }
 
+// ask the gamekeeper to provide a question when placing a main objective marker
+function questionPrompt() {
+    var question = prompt("Please enter a question", "");
+    if (question == "") {
+        alert("Please enter a valid question.");
+        questionPrompt();
+    }
+    return question;
+}
+
+// ask the gamekeeper to provide the answer to the question when placing the main objective marker
+function answerPrompt() {
+    var answer = prompt("Please enter the answer", "");
+    if (answer == "") {
+        alert("Please enter a valid answer.");
+        answerPrompt();
+    }
+    return answer;
+}
+
 // event handler for left clicks, places main markers on map and asks to name the marker
 function placeMainMarker(latLng, map) {
     var title = prompt('Name your primary objective:', '');
@@ -46,16 +66,20 @@ function placeMainMarker(latLng, map) {
         alert("Main objective already exists!");
         return;
     }
+    var question = questionPrompt();
+    var answer = answerPrompt();
 // generate a marker on the map with the following config
     var marker = new google.maps.Marker({
         position: latLng,
         map: map,
         icon: icons + 'target.png',
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        question: question,
+        answer: answer
     });
     markerReferences.push(marker);
     // store marker data in designated object
-    mainObjectives[title] = [latLng.lat(), latLng.lng()];
+    mainObjectives[title] = [latLng.lat(), latLng.lng(), question, answer];
     console.log(mainObjectives);
     document.getElementById("mobjctvlist").innerHTML += "Main " + title + "\n" + mainObjectives[title] + "\n";
 }
@@ -93,11 +117,13 @@ function submitMarkers() {
         var title = marker;
         var latitude = mainObjectives[marker][0];
         var longitude = mainObjectives[marker][1];
+        var question = mainObjectives[marker][2];
+        var answer = mainObjectives[marker][3];
         var type = "Main";
         $.ajax({
             url:'insert_markers.php',
             method:'POST',
-            data:{title:title,latitude:latitude,longitude:longitude,type:type,gameName:gameName},
+            data:{title:title,latitude:latitude,longitude:longitude,question:question,answer:answer,type:type,gameName:gameName},
             success:function(data) { alert(data + ": Main objective markers.") } // BUG HERE
         });
     }

@@ -3,7 +3,7 @@
     $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS, DATABASE_NAME);
     $dataArray = array();
     $gameName = $_POST['gameName'];
-    $sql = "SELECT `latitude`, `longitude`, `type`, `title` FROM `testmarkers` WHERE `gameName` = '$gameName'";
+    $sql = "SELECT `latitude`, `longitude`, `question`, `answer`, `type`, `title` FROM `testmarkers` WHERE `gameName` = '$gameName'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         array_push($dataArray, $row);
