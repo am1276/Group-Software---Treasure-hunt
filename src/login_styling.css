@@ -1,0 +1,43 @@
+#container {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+#submit {
+  background-image: linear-gradient(lightgreen,green);
+  font-family: Roboto Condensed;
+  border: green;
+  border-radius: 2px;
+  height: 2em; width: 5em;
+  padding: 0px;
+  transition: filter 0.2s, transform 0.2s;
+}
+
+form {
+    top: 45%;
+    position: relative;
+}
+
+input {
+  transform: scale(1.5);
+  width: 150px;
+  background-color: transparent;
+  border-style: hidden hidden solid hidden;
+  border-width: 1px;
+  margin: 20px;
+  color: white;
+  transition: transform 0.4s;
+}
+
+input:hover {
+  transform: scale(1.7);
+}
+
+input:focus {
+  transform: scale(1.7);
+}
+
+body {
+    background-color: skyblue;
+}
