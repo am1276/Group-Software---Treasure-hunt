@@ -22,7 +22,7 @@
         </div>
         <div id="hamburgermenu" style="z-index: 100;">
             <h1 id="leaderboardheader" style="font-family:'Roboto'; transition:0.5s; text-align:center;">Top 10 players</h1>
-            <div id="leaderboard" style="font-family:'Roboto'; transition:0.5s; text-align:center;"></div>
+            <div id="leaderboard" style="font-family:'Roboto'; transition:0.5s; text-align:center; font-size:0px;"></div>
         </div>
         <div id="container">
             <div id="marker"></div>
