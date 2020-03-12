@@ -16,7 +16,7 @@ The group members are:
 This is a submission for Sprint 3. There are three types of document that you will find the following places.
 
 ## PROCESS DOCUMENTS
-Our process documents of which includes the Kanban board are managed using Trello. For this sprint, some reform in terms of our process documentation has been made based off of feedback; new ideas and revamps of old ones to suit more realistic goals were made, proper prioritisation of backlog tasks were allocated, the addition of DONE columns were introduced to the Kanban board and the creation of a development policy for all members in the group to follow has been established.
+Our process documents of which includes the Kanban board are managed using Trello.
 
 Link to our Kanban board: https://trello.com/b/96pqWiDz/group-project-kanban-board
 
@@ -26,7 +26,7 @@ Given that this sprint focuses on product, there will be little process document
 ## TECHNICAL DOCUMENTS
 All our technical documents are managed on GitHub. For this sprint, the goal was to produce an MVP to build our planned system off of for the final sprint. All source code and necessary components are found in the technical documents directory within the link below.
 
-Link to repository: https://github.com/KaiZarzycki/GSEP/tree/master/submissions/sprint2
+Link to repository: https://github.com/KaiZarzycki/GSEP/tree/master/submissions/sprint3
 
 Path to technical documents: [./technical documents/]
 
