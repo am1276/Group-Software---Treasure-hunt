@@ -24,7 +24,7 @@ Given that this sprint focuses on product, there will be little process document
 
 
 ## TECHNICAL DOCUMENTS
-All our technical documents are managed on GitHub. For this sprint, the goal was to produce an MVP to build our planned system off of for the final sprint. All source code and necessary components are found in the technical documents directory within the link below.
+All our technical documents are managed on GitHub. All source code and necessary components are found in the technical documents directory within the link below.
 
 Link to repository: https://github.com/KaiZarzycki/GSEP/tree/master/submissions/sprint3
 
